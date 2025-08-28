@@ -9,7 +9,7 @@ def check_access(func):
 
 @check_access
 def delete_employee(employee):
-    print(f"Employee {employee['name']} has been deleted")
+    print(f"Employee {employee['name']} has been deleted") 
 
 admin = {
     'name': 'Carlos', 
