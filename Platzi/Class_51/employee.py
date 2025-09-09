@@ -2,7 +2,7 @@
 class Employee:
   def __init__(self, name, *args, **kwargs):
     self.name = name
-    self.skills = args
+    self.skills = args 
     self.detail = kwargs
 
   def show_employee(self):
