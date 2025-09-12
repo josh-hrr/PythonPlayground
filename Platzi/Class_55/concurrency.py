@@ -2,7 +2,7 @@
 concurrency:
 
 
-definition: manages multiple threads progressively 
+definition: manages multiple threads progressively, shares memory
 ideal usage: I/O operations, network waits, files writing
 implementaion: threading, asyncio
 

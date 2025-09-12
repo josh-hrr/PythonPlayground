@@ -2,9 +2,9 @@
 
 paralelism:
 
-definition: executes simultaniously every task
+definition: executes simultaniously every task, do not share memory
 ideal usage: tasks require much calculation
-implementation: 
+implementation: multiprocessing
 
 '''
 
