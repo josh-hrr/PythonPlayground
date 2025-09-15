@@ -4,27 +4,28 @@ ideal usage: when multiple threads access shared data, example: withdrawing a ba
 implementation: threading.Lock
 
 '''
-import threading
+#example 1 - no Lock
+import threading, time, sys
 
-# Simulating a bank account with a balance
-balance = 0
-lock = threading.Lock() # Create a lock object
+lock = threading.Lock()
+globalBalance = 0
+def deposit(money): 
+    global globalBalance
+    for _ in range(2000):
+        with lock:                        # if you comment this line, you will see a wrong balance at the end
+          readBalance = globalBalance     # read
+          time.sleep(0)                   # let another thread to run if one is waiting
+          readBalance = readBalance + money
+          globalBalance = readBalance     # write
 
-def deposit(money):
-  global balance # why global? because we are modifying the global variable
-  for _ in range(100000): # why _? because we don't care about the variable, why 100000? to simulate a long process.
-    with lock:
-      balance = balance + money
+threads = [] 
 
-threads = []
 for _ in range(2):
-  thread = threading.Thread(target=deposit, args=(1,))
-  threads.append(thread)
-  thread.start()
- 
-for thread in threads: 
-  print("Thread: ", thread.name)
-  thread.join()
+    thread = threading.Thread(target=deposit, args=(1,))
+    threads.append(thread)
+    thread.start()
 
-print(f'Ending balance: {balance}') # Expected: 200000
+for thread in threads:
+    thread.join() #ensures it waits until each thread completes
 
+print("Ending balance:", globalBalance, " (expected:", 2*2000, ")")  
