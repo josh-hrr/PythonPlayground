@@ -6,6 +6,7 @@ creates a new module "my_functions.py"
 it gets imported in "main.py"
 list comprehension to create a list of every total occurance from the list-dictionary
 sum function: sums all items in a list
+
 '''
 
 from my_functions import get_totals_list, get_sum_totals
