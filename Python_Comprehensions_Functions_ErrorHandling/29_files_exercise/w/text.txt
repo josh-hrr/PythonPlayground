@@ -1,0 +1,2 @@
+starting point overrides existing content if file exists○
+if file does not exists, it is created 🍟
