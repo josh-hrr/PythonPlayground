@@ -4,7 +4,7 @@ my_list = [1, 2]
 my_list.append(3) # adds a new item at the end
 print(my_list)
 
-my_list.insert(0, 0) # index, value
+my_list.insert(0, 5) # index, value
 print(my_list)
 
 my_list.extend([4,5]) # extending original list

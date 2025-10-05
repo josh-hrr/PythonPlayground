@@ -69,7 +69,7 @@ del tuple     - but cannot delete a specific value
 
 
 '''
-
+print('--------------------- tuple ')
 my_tuple = (1, 2, 3, 4, 5, 5, 4) 
 print(my_tuple)
 print(my_tuple[0])   

@@ -8,7 +8,12 @@ set_countries = {'col', 'mex', 'bol'}
 size = len(set_countries)
 print(size)
 
-print('col' in set_countries) #reading set
+#reading set - membership
+print('col' in set_countries) 
+
+# reading set - iteration
+for country in set_countries:
+  print(country)
 
 # create
 set_countries.add('gt')
