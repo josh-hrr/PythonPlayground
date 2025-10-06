@@ -13,10 +13,10 @@ iterate over the dictionary, pass the values into the ax.bar(year, number)
 
 '''
 
-def generate_bar_chart(labels, values):
+def generate_bar_chart(labels, values, country='default'):
   fig, ax = pyplot.subplots()
-  ax.bar(labels, values)
-  pyplot.show()
+  ax.bar(labels, values) 
+  pyplot.savefig(f'{country}.png') 
 
 def generate_pie_chart(labels, values):
   fig, ax = pyplot.subplots()
@@ -31,8 +31,8 @@ def generate_pie_chart(labels, values):
   )
 
   ax.axis("equal")
-  pyplot.tight_layout()
-  pyplot.show()
+  
+  pyplot.savefig('generate_pie_chart.png') 
 
   
 def read_csv(path):
@@ -97,9 +97,12 @@ if __name__ == '__main__':
     my_values = list(year_data.values())
     generate_bar_chart(my_labels, my_values)
 
-  data_by_country = get_data_by_country(my_file, 'Brazil')
+  country_name = input("Enter country name: ")
+
+
+  data_by_country = get_data_by_country(my_file, country_name)
   c_label, c_population = get_population_country(data_by_country)
-  generate_bar_chart(c_label, c_population)
+  generate_bar_chart(c_label, c_population, country_name)
 
   print("****get_all_world_population_percentage****")
   p_label, p_values = get_all_world_population_percentage(my_file)
