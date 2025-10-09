@@ -35,7 +35,7 @@ async def read_items():
             <title>Some HTML in here</title>
         </head>
         <body>
-            <h1>Look ma! HTML!</h1>
+            <h1>Hello world asdfasfasdasdf</h1>
         </body>
     </html>
     """
