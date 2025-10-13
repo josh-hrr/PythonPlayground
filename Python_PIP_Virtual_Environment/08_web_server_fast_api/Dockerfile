@@ -7,4 +7,4 @@ RUN pip3 install --no-cache-dir --upgrade -r requirements.txt
 
 COPY . /my_super_app/
 
-CMD ["uvicorn", "08_web_server_fast_api.08_fast_api:app", "0.0.0.0", "--port", "8585", "--reload"]
+CMD ["uvicorn", "08_fast_api:app", "--host", "0.0.0.0", "--port", "82"]

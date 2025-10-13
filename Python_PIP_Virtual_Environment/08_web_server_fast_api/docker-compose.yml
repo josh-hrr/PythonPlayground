@@ -1,10 +1,10 @@
 services:
-  app-csv:
+  app:
     build:
       context: .
       dockerfile: Dockerfile
     volumes:
       - .:/my_super_app
     ports:
-      - '8585:8585'
+      - '85:82'
   
