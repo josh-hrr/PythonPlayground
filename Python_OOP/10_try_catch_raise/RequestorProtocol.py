@@ -14,6 +14,6 @@ class RequestorProtocol(Protocol):
     """Method must be implemented for any requestor"""
     ...
 
-  def get_poly_example(self, example: str) -> str:
+  def get_poly_example(self) -> str:
     """Method must be implemented for any requestor"""
     ...
