@@ -13,3 +13,13 @@ class Estudiante(Usuario):
     else:
       return f"Cannot borrowed more books, limit has been reached!"
     
+  def return_book(self, title):
+    if len(self.books_borrowed) != 0:
+      self.books_borrowed.remove(title)
+      return f"Book {title} has been returned!"
+    else: 
+      return f"Cannot returned the specified book"
+
+
+
+    

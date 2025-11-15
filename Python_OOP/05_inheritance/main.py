@@ -10,4 +10,7 @@ if __name__ == "__main__":
   print(estudent1.request_book("Python Test3"))
   print(estudent1.request_book("Python Test4"))
 
+  print(estudent1.return_book("Python Test3"))
+  print(estudent1.get_books_requested())
+
 

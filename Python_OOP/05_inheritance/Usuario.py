@@ -6,3 +6,9 @@ class Usuario:
 
   def request_book(self, title):
     return f"The request of the book {title} has been submitted! "
+  
+  def return_book(self, title):
+    return f"The return of the book {title} has been submitted! "
+  
+  def get_books_requested(self):
+    return f"The books requested look as follows: {self.books_borrowed}"
