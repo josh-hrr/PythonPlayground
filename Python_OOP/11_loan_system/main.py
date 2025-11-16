@@ -1,45 +1,69 @@
 
-from users import Student, Profesor, User
-from books import Book, BookPhysical, BookDigital
 from library import Library 
-from exceptions import UserNotFoundError
-
+from exceptions import UserNotFoundError, BookIsNotAvailableError
+from data import student_data, profesor_data, book_data
+from users import Student, Profesor
+from books import Book
 
 if __name__ == "__main__":
 
   my_library = Library("University Library") 
-  student_1 = Student("Hans", "1", "Engineering")
-  student_2 = Student("Rose", "2", "Psychology") 
-  profesor_1 = Profesor("Prof1", "3")
-  profesor_2 = Profesor("Prof2", "4") 
-  book_1 = Book("Python Basics", "Author1", "123456")
-  book_2 = Book("Advanced Python", "Author2", "7891011")
-  book_3 = Book("Data Science with Python", "Author3", "12131415")
-  physical_book_1 = BookPhysical("Physical Book1", "Author4", "16171819")
-  digital_book_1 = BookDigital("Digital Book1", "Author5", "20212223")
+  
+  my_library.users = []
+  my_library.users.extend(student_data)
+  my_library.users.extend(profesor_data)
+  my_library.books = book_data
 
-  my_library.users = [student_1, student_2, profesor_1, profesor_2]  
-  my_library.books = [book_1, book_2, book_3, physical_book_1, digital_book_1] 
 
-  print("Welcome to My Library!") 
+
+  print("Welcome to My Library!")  
   print("Books available: ")
   for book in my_library.get_books_available():
     print(book)
   print("\n")
   dpi: str = input("Enter the DPI number: ")
-  new_user: User
-  user_found: bool = False
-
+  user_found: Student | Profesor | None = None
+  is_user_found: bool = False 
   try:
-    new_user = my_library.search_user_by_dpi(dpi)
-    user_found = True
+    user_found = my_library.search_user_by_dpi(dpi)
+    is_user_found = True
     try: 
-      print(new_user.name, new_user.DPI, new_user.career)
+      print(user_found.name, user_found.DPI, user_found.career)
     except AttributeError:
-      print(new_user.name, new_user.DPI)
-      print(f"User {new_user.name} does not have a career attribute.") 
+      print(user_found.name, user_found.DPI)
+      print(f"User {user_found.name} does not have a career attribute.") 
   except UserNotFoundError:
     print(f"User with DPI {dpi} not found in the system.") 
-    user_found = False
- 
- 
+    is_user_found = False
+  
+  book_title: str = input("Enter book Title: ")
+  book_found: Book | None = None
+  is_book_found: bool = False
+  try:
+    book_found = my_library.search_book_by_title(book_title)
+    is_book_found = True 
+    print(f"Book found: {book_found.title}, {book_found.author}, {book_found.available}")
+  except BookIsNotAvailableError:
+    print(f"Book {book_title} not found!")
+  
+  if user_found is not None and book_found is not None and is_user_found and is_book_found: 
+    result_request_book = user_found.request_book(book_found.title)
+    print(f"\n{result_request_book}") 
+    print("\n times lent test: ", book_found.times_lent) 
+    print("\n set times lent test: ")
+    book_found.times_lent = 50
+    print("\n times lent test: ", book_found.times_lent) 
+    try:
+      result_is_lent_book = book_found.is_lend_book()
+      print(f"\n{result_is_lent_book}")
+    except BookIsNotAvailableError as e:
+      print(e)
+
+  #testing static method: 
+  #print(Library.validate_isbn("1234567890"))
+
+  create_book_unavailable = Book.create_book_unavailable("TitleTest", "Author Test", "123456")
+  print("book is not available: ", create_book_unavailable)
+  print("book is not available: ", create_book_unavailable.available)
+
+  

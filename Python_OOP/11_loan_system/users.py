@@ -1,6 +1,17 @@
 from exceptions import InvalidTitleError
+from abc import ABC, abstractmethod
 
-class User:
+class UserBase(ABC):
+
+  @abstractmethod
+  def request_book(self, title: str) -> str:
+    ...
+
+  @abstractmethod
+  def test_method(self) -> str:
+    ...
+
+class User(UserBase):
   def __init__(self, name: str, DPI: str):
     self.name = name
     self.DPI = DPI 
@@ -20,6 +31,9 @@ class User:
   def get_poly_example(self) -> str:
     return "Poly example" 
   
+  def test_method(self):
+    return "Testing abstract class, this method must be declared."
+  
 class Profesor(User):
   def __init__(self, name: str, DPI: str):
     super().__init__(name, DPI)
@@ -33,10 +47,15 @@ class Profesor(User):
     return "Poly example from professor!" 
   
 class Student(User):
-  def __init__(self, name: str, DPI: str, career: str):
+  def __init__(self, name: str, DPI: str, career: str, email: str | None = None):
     super().__init__(name, DPI)
-    self.career = career
+    self.career = career 
+    self.email = email
     self.book_limit = 3
+
+  @classmethod
+  def create_student_with_email(cls, name: str, DPI: str, career: str, email: str):
+    return cls(name, DPI, career, email)
   
   def request_book(self, title: str):
     if not title:
