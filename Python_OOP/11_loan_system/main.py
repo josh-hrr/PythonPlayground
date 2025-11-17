@@ -1,22 +1,25 @@
 
-from library import Library 
+#from library import Library 
 from exceptions import UserNotFoundError, BookIsNotAvailableError
-from data import student_data, profesor_data, book_data
+#from data import student_data, profesor_data, book_data
 from users import Student, Profesor
 from books import Book
+from persistency import Persistency
 
 if __name__ == "__main__":
 
-  my_library = Library("University Library") 
-  
-  my_library.users = []
-  my_library.users.extend(student_data)
-  my_library.users.extend(profesor_data)
-  my_library.books = book_data
+
+  #my_library = Library("University Library") 
+  #my_library.users = []
+  #my_library.users.extend(student_data)
+  #my_library.users.extend(profesor_data)
+  #my_library.books = book_data
+
+  persistency = Persistency()
+  my_library = persistency.load_data()
 
 
-
-  print("Welcome to My Library!")  
+  print(f"Welcome to {my_library.name}!")  
   print("Books available: ")
   for book in my_library.get_books_available():
     print(book)
@@ -66,4 +69,6 @@ if __name__ == "__main__":
   print("book is not available: ", create_book_unavailable)
   print("book is not available: ", create_book_unavailable.available)
 
+  #save everytime there is a change
+  persistency.save_data(my_library)
   

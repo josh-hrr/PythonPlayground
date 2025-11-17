@@ -1,0 +1,79 @@
+{
+    "name": "University Library",
+    "users": [
+        {
+            "name": "Hans",
+            "DPI": "1",
+            "books_borrowed": [],
+            "career": "Engineering",
+            "email": null,
+            "book_limit": 3
+        },
+        {
+            "name": "Rose",
+            "DPI": "2",
+            "books_borrowed": [],
+            "career": "Psychology",
+            "email": null,
+            "book_limit": 3
+        },
+        {
+            "name": "Korean",
+            "DPI": "3",
+            "books_borrowed": [],
+            "career": "Engineering",
+            "email": null,
+            "book_limit": 3
+        },
+        {
+            "name": "Prof1",
+            "DPI": "4",
+            "books_borrowed": [],
+            "book_limit": null
+        },
+        {
+            "name": "Prof2",
+            "DPI": "5",
+            "books_borrowed": [],
+            "book_limit": null
+        }
+    ],
+    "books": [
+        {
+            "title": "Python Basics",
+            "author": "Author1",
+            "isbn": "123456",
+            "available": true,
+            "_Book__times_lent": 0
+        },
+        {
+            "title": "Advanced Python",
+            "author": "Author2",
+            "isbn": "7891011",
+            "available": true,
+            "_Book__times_lent": 0
+        },
+        {
+            "title": "Data Science with Python",
+            "author": "Author3",
+            "isbn": "12131415",
+            "available": true,
+            "_Book__times_lent": 0
+        },
+        {
+            "title": "Physical Book1",
+            "author": "Author4",
+            "isbn": "16171819",
+            "available": true,
+            "_Book__times_lent": 0
+        },
+        {
+            "title": "Digital Book1",
+            "author": "Author5",
+            "isbn": "20212223",
+            "available": true,
+            "_Book__times_lent": 0
+        }
+    ],
+    "date_saved": "2025-11-16T19:03:54.050512"
+}
